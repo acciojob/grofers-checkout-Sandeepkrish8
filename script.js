@@ -1,3 +1,7 @@
+const getSumBtn = document.createElement("button");
+getSumBtn.textContent = "Get Total Price";
+document.body.appendChild(getSumBtn);
+
 const getSum = () => {
   const prices = document.querySelectorAll(".price");
   let total = 0;
@@ -8,16 +12,17 @@ const getSum = () => {
 
   const table = document.querySelector("table");
 
-  // Prevent adding total row multiple times
   if (document.getElementById("total-row")) return;
 
-  const totalRow = document.createElement("tr");
-  totalRow.id = "total-row";
+  const row = document.createElement("tr");
+  row.id = "total-row";
 
-  const totalCell = document.createElement("td");
-  totalCell.colSpan = 2;
-  totalCell.textContent = `Total Price: ${total}`;
+  const cell = document.createElement("td");
+  cell.colSpan = 2;
+  cell.textContent = `Total Price: ${total}`;
 
-  totalRow.appendChild(totalCell);
-  table.appendChild(totalRow);
+  row.appendChild(cell);
+  table.appendChild(row);
 };
+
+getSumBtn.addEventListener("click", getSum);
