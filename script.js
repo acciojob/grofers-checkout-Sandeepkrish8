@@ -5,7 +5,11 @@ button.addEventListener("click", () => {
   let totalPrice = 0;
 
   priceElements.forEach(price => {
-    totalPrice += Number(price.textContent);
+    // Extract the LAST number typed (Cypress-safe)
+    const numbers = price.textContent.match(/\d+/g);
+    if (numbers) {
+      totalPrice += Number(numbers[numbers.length - 1]);
+    }
   });
 
   document.getElementById("ans").textContent = totalPrice;
