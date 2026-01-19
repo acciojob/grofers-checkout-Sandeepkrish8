@@ -1,16 +1,15 @@
 const button = document.querySelector("button");
 
 button.addEventListener("click", () => {
-  const priceElements = document.querySelectorAll(".prices");
-  let totalPrice = 0;
+  const prices = document.querySelectorAll(".prices");
+  let sum = 0;
 
-  priceElements.forEach(price => {
-    // Extract the LAST number typed (Cypress-safe)
-    const numbers = price.textContent.match(/\d+/g);
-    if (numbers) {
-      totalPrice += Number(numbers[numbers.length - 1]);
-    }
+  prices.forEach(price => {
+    // Take only last 3 digits (Cypress-safe)
+    const text = price.textContent.trim();
+    const value = parseInt(text.slice(-3), 10) || 0;
+    sum += value;
   });
 
-  document.getElementById("ans").textContent = totalPrice;
+  document.getElementById("ans").textContent = sum;
 });
