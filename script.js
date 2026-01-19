@@ -1,25 +1,23 @@
-<script>
-  // Step 1: Get all price elements
-  const priceElements = document.querySelectorAll(".prices");
+// Get all price elements
+const priceElements = document.querySelectorAll(".prices");
 
-  let total = 0;
+let totalPrice = 0;
 
-  // Step 2: Calculate the sum
-  priceElements.forEach(price => {
-    total += Number(price.textContent);
-  });
+// Calculate the total
+priceElements.forEach(price => {
+  totalPrice += Number(price.textContent);
+});
 
-  // Step 3: Create a new row
-  const table = document.getElementById("grocery-table");
-  const totalRow = document.createElement("tr");
-  const totalCell = document.createElement("td");
+// Create a new row
+const totalRow = document.createElement("tr");
 
-  // Step 4: Style & content
-  totalCell.colSpan = 2;
-  totalCell.textContent = `Total Price: ₹${total}`;
-  totalCell.style.fontWeight = "bold";
-  totalCell.style.textAlign = "center";
+// Create a single cell
+const totalCell = document.createElement("td");
+totalCell.colSpan = 2;
+totalCell.textContent = "Total Price: " + totalPrice;
 
-  totalRow.appendChild(totalCell);
-  table.appendChild(totalRow);
-</script>
+// Append cell to row
+totalRow.appendChild(totalCell);
+
+// Append row to table
+document.getElementById("grocery-table").appendChild(totalRow);
